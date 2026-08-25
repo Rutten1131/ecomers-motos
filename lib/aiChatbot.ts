@@ -198,9 +198,16 @@ REGLAS DE INVENTARIO Y ASESORÍA:
       { role: "user", content: `Cliente (${customerName}, Teléfono: ${customerPhone}): "${userMessage}"` },
     ];
 
-    // Función de llamada con 1 reintento automático (retry)
-    const callGroqWithRetry = async (bodyObj: any, retries: number = 1): Promise<Response> => {
-      for (let attempt = 0; attempt <= retries; attempt++) {
+    // Función de llamada con reintentos automáticos y fallback de modelos
+    const AVAILABLE_MODELS = [
+      "openai/gpt-oss-120b",
+      "openai/gpt-oss-20b",
+      "qwen/qwen3.6-27b"
+    ];
+
+    const callGroqWithFallback = async (bodyObj: any): Promise<Response> => {
+      let lastError: any = null;
+      for (const modelName of AVAILABLE_MODELS) {
         try {
           const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
             method: "POST",
@@ -208,22 +215,24 @@ REGLAS DE INVENTARIO Y ASESORÍA:
               "Content-Type": "application/json",
               Authorization: `Bearer ${GROQ_API_KEY}`,
             },
-            body: JSON.stringify(bodyObj),
+            body: JSON.stringify({
+              ...bodyObj,
+              model: modelName,
+            }),
           });
-          if (res.ok || attempt === retries) return res;
-          console.warn(`[Groq AI] Reintento ${attempt + 1}/${retries} por status ${res.status}`);
-          await new Promise((r) => setTimeout(r, 1000));
+          if (res.ok) return res;
+          const errText = await res.text();
+          console.warn(`[Groq AI] Modelo ${modelName} falló (status ${res.status}): ${errText}. Intentando siguiente modelo...`);
+          lastError = new Error(`Groq status ${res.status}: ${errText}`);
         } catch (e) {
-          if (attempt === retries) throw e;
-          console.warn(`[Groq AI] Reintento ${attempt + 1}/${retries} por error de red:`, e);
-          await new Promise((r) => setTimeout(r, 1000));
+          console.warn(`[Groq AI] Error de red con ${modelName}:`, e);
+          lastError = e;
         }
       }
-      throw new Error("Límite de reintentos alcanzado");
+      throw lastError || new Error("Todos los modelos de Groq fallaron");
     };
 
-    const initialRes = await callGroqWithRetry({
-      model: "llama-3.3-70b-versatile",
+    const initialRes = await callGroqWithFallback({
       messages: messagesHistory,
       tools: TOOLS_SCHEMA,
       tool_choice: "auto",
@@ -272,8 +281,7 @@ REGLAS DE INVENTARIO Y ASESORÍA:
       }
 
       // Segunda llamada a Groq con los resultados de las tools para generar la respuesta natural final al usuario
-      const followUpRes = await callGroqWithRetry({
-        model: "llama-3.3-70b-versatile",
+      const followUpRes = await callGroqWithFallback({
         messages: messagesHistory,
         temperature: 0.5,
         max_tokens: 600,

@@ -25,10 +25,15 @@ export async function POST(request: Request) {
     // Clean phone number
     const cleanNumber = remoteJid.replace(/@.*$/, "").replace(/\D/g, "");
 
-    // STRICT NUMBER RESTRICTION: ONLY respond to 593982337491
-    if (!cleanNumber.includes(ALLOWED_NUMBER) && !ALLOWED_NUMBER.includes(cleanNumber)) {
-      console.log(`[WhatsApp Bot] Ignored message from unallowed number: ${cleanNumber}`);
-      return NextResponse.json({ status: "ignored_restricted_number", number: cleanNumber });
+    // Phone restriction filter (if configured)
+    const allowedEnv = (process.env.ALLOWED_WHATSAPP_NUMBER || "").trim();
+    if (allowedEnv && allowedEnv !== "*" && allowedEnv !== "all") {
+      const allowedList = allowedEnv.split(",").map(n => n.trim().replace(/\D/g, "")).filter(Boolean);
+      const isAllowed = allowedList.some(num => cleanNumber.includes(num) || num.includes(cleanNumber));
+      if (!isAllowed) {
+        console.log(`[WhatsApp Bot] Ignored message from unallowed number: ${cleanNumber}. Allowed: ${allowedList.join(", ")}`);
+        return NextResponse.json({ status: "ignored_restricted_number", number: cleanNumber });
+      }
     }
 
     // Extract message content
