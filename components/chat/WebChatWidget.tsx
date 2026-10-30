@@ -120,7 +120,7 @@ export default function WebChatWidget() {
           <div className="bg-[#1c1c1f] px-4 py-3.5 flex items-center justify-between font-mono text-xs text-steel-light border-b border-white/10">
             <div className="flex items-center gap-2.5">
               <span className="w-2 h-2 rounded-full bg-amber animate-pulse" />
-              <span>Asistente Asfalto · en línea AI</span>
+              <span>Asistente Motos y Motos · en línea AI</span>
             </div>
             <button
               onClick={() => setIsOpen(false)}

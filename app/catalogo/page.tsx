@@ -5,7 +5,7 @@ import CatalogClient from "@/components/catalog/CatalogClient";
 import { motos } from "@/data/motos";
 
 export const metadata = {
-  title: "Catálogo — Asfalto°",
+  title: "Catálogo — Motos y Motos",
 };
 
 export default function CatalogoPage() {

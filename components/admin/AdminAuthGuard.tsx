@@ -48,7 +48,7 @@ export default function AdminAuthGuard({ children }: { children: React.ReactNode
         <div className="w-full max-w-md bg-[#161619] border border-white/10 p-8 md:p-10 shadow-2xl">
           <div className="mb-8 text-center">
             <h1 className="font-display font-black text-3xl uppercase tracking-wider text-ivory">
-              ASFALTO<span className="text-oxblood">°</span> ADMIN
+              Motos y Motos ADMIN
             </h1>
             <p className="font-mono text-xs text-steel-light mt-2 uppercase tracking-wider">
               Acceso a panel administrativo

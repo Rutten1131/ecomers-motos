@@ -174,7 +174,7 @@ export default function Home() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Ubicación de Asfalto°"
+                title="Ubicación de Motos y Motos"
                 className="absolute inset-0"
               />
             </div>
@@ -191,7 +191,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-amber">✉️</span>
-                  <span className="text-steel-light">ventas@asfalto.ec</span>
+                  <span className="text-steel-light">ventas@motosymotos.ec</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-amber">🕐</span>

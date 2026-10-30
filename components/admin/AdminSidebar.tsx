@@ -19,7 +19,7 @@ export default function AdminSidebar() {
     <aside className="w-[220px] shrink-0 border-r border-white/10 py-6 hidden md:block">
       <div className="px-6 pb-6 mb-2 border-b border-white/10">
         <span className="font-display font-bold text-xl text-ivory">
-          ASFALTO<span className="text-oxblood">°</span>
+          Motos y Motos
         </span>
         <div className="font-mono text-[10px] text-steel uppercase tracking-wider mt-1">
           Panel de control

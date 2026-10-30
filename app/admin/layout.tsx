@@ -3,7 +3,7 @@ import AdminAuthGuard from "@/components/admin/AdminAuthGuard";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Admin — Asfalto°",
+  title: "Admin — Motos y Motos",
 };
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

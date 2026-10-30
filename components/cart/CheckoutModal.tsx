@@ -100,7 +100,7 @@ export default function CheckoutModal() {
     .map((i) => `• ${i.nombre} (x${i.cantidad}) - $${(i.precio * i.cantidad).toLocaleString()}`)
     .join("%0A");
 
-  const whatsappMessage = `Hola Asfalto°! 👋 Acabo de realizar el pedido *#${orderId}*%0A%0A*Cliente:* ${formData.nombre}%0A*Teléfono:* ${formData.telefono}%0A*Ciudad:* ${formData.ciudad || "Ecuador"}%0A*Total:* $${subtotal.toLocaleString()}%0A%0A*Productos:*%0A${itemsSummaryText}%0A%0AAdjunto mi comprobante de transferencia bancaria. 📄`;
+  const whatsappMessage = `Hola Motos y Motos! 👋 Acabo de realizar el pedido *#${orderId}*%0A%0A*Cliente:* ${formData.nombre}%0A*Teléfono:* ${formData.telefono}%0A*Ciudad:* ${formData.ciudad || "Ecuador"}%0A*Total:* $${subtotal.toLocaleString()}%0A%0A*Productos:*%0A${itemsSummaryText}%0A%0AAdjunto mi comprobante de transferencia bancaria. 📄`;
 
   const whatsappLink = `https://wa.me/593983237491?text=${whatsappMessage}`;
 
@@ -337,7 +337,7 @@ export default function CheckoutModal() {
                           ACTIVO
                         </span>
                       </h5>
-                      <p className="text-xs text-steel">Transferencia directa a cuenta de empresa Asfalto°.</p>
+                      <p className="text-xs text-steel">Transferencia directa a cuenta de empresa Motos y Motos.</p>
                     </div>
                   </div>
 
@@ -351,9 +351,9 @@ export default function CheckoutModal() {
                         <div><strong className="text-ink">Banco:</strong> Banco Pichincha</div>
                         <div><strong className="text-ink">Tipo:</strong> Cuenta Corriente</div>
                         <div><strong className="text-ink">Nº Cuenta:</strong> 2100485912</div>
-                        <div><strong className="text-ink">Titular:</strong> ASFALTO MOTOS S.A.S.</div>
+                        <div><strong className="text-ink">Titular:</strong> MOTOS Y MOTOS S.A.S.</div>
                         <div><strong className="text-ink">RUC:</strong> 1793148592001</div>
-                        <div><strong className="text-ink">Email:</strong> pagos@asfalto-motos.ec</div>
+                        <div><strong className="text-ink">Email:</strong> pagos@motosymotos.ec</div>
                       </div>
                       <p className="text-[11px] text-oxblood font-medium pt-1">
                         * Al finalizar, podrás enviar tu comprobante directamente a nuestro WhatsApp oficial para validación inmediata.
@@ -375,7 +375,7 @@ export default function CheckoutModal() {
                 <h4 className="font-extrabold text-2xl text-ink">¡Pedido Registrado con Éxito!</h4>
                 <p className="text-sm font-semibold text-oxblood mt-1">Número de Orden: #{orderId}</p>
                 <p className="text-xs text-steel mt-2 max-w-md mx-auto">
-                  Gracias por tu compra en **Asfalto°**. Tus datos se han registrado correctamente en nuestra base de datos.
+                  Gracias por tu compra en **Motos y Motos**. Tus datos se han registrado correctamente en nuestra base de datos.
                 </p>
               </div>
 

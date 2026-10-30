@@ -9,7 +9,7 @@ export default function Navbar() {
   return (
     <nav className="max-w-[1400px] mx-auto px-6 md:px-10 py-7 flex items-center justify-between">
       <Link href="/" className="font-display font-bold text-2xl tracking-tight">
-        ASFALTO<span className="text-oxblood">°</span>
+        Motos y Motos
       </Link>
       <div className="flex items-center gap-6 sm:gap-9 text-sm font-medium text-steel">
         <Link href="/catalogo" className="hover:text-ink transition-colors">

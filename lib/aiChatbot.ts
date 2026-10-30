@@ -13,7 +13,7 @@ const TOOLS_SCHEMA = [
     type: "function",
     function: {
       name: "buscar_unidades",
-      description: "Busca motocicletas físicas disponibles en el inventario real de Asfalto° según rango de precios, categoría, marca o condición.",
+      description: "Busca motocicletas físicas disponibles en el inventario real de Motos y Motos según rango de precios, categoría, marca o condición.",
       parameters: {
         type: "object",
         properties: {
@@ -163,7 +163,7 @@ export async function generateAiResponseWithTools(
 ): Promise<{ textReply: string; toolCallsExecuted: any[] }> {
   try {
     const systemPrompt = `
-Eres un asesor comercial humano, cercano, atento y entusiasta de 'Asfalto°' 🏍️ (concesionario de motos en Ecuador).
+Eres un asesor comercial humano, cercano, atento y entusiasta de 'Motos y Motos' 🏍️ (concesionario de motos en Ecuador).
 
 REGLAS DE TONO Y ESTILO HUMANO:
 - Habla como una persona real: amable, directo y sin sermones ni respuestas robóticas.
@@ -291,14 +291,14 @@ REGLAS DE INVENTARIO Y ASESORÍA:
         const followUpData = await followUpRes.json();
         const finalContent = followUpData.choices?.[0]?.message?.content;
         return {
-          textReply: finalContent || "Procesamos tu solicitud con éxito en Asfalto°.",
+          textReply: finalContent || "Procesamos tu solicitud con éxito en Motos y Motos.",
           toolCallsExecuted,
         };
       }
     }
 
     return {
-      textReply: choice.content || "Gracias por contactar a Asfalto°. ¿En qué podemos ayudarte?",
+      textReply: choice.content || "Gracias por contactar a Motos y Motos. ¿En qué podemos ayudarte?",
       toolCallsExecuted: [],
     };
   } catch (error) {

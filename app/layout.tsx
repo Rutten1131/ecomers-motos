@@ -21,7 +21,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Asfalto° — Motos nuevas y seminuevas",
+  title: "Motos y Motos — Motos nuevas y seminuevas",
   description:
     "Concesionario de motos nuevas y seminuevas. Ficha técnica real y un asistente que responde al instante en la web o por WhatsApp.",
   icons: {

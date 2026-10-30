@@ -25,7 +25,7 @@ export default function ChatWidget() {
         <div className="fixed bottom-24 right-6 z-50 w-[320px] bg-[#151517] border border-white/10 shadow-2xl">
           <div className="bg-[#1c1c1f] px-4 py-3.5 flex items-center gap-2.5 font-mono text-xs text-steel-light border-b border-white/10">
             <span className="w-2 h-2 rounded-full bg-amber" />
-            Asistente Asfalto · en línea
+            Asistente Motos y Motos · en línea
           </div>
           <div className="p-4 flex flex-col gap-3 min-h-[220px]">
             {CONVERSACION_DEMO.map((m, i) => (
